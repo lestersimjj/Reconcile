@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Reconciliation Project</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="{{url_for('static', filename="css/user.css")}}">
+
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/index">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAh1BMVEX///8jJScOEhUVGBubnJ19fX4AAAAgIyUXGhwsLjDa2trc3dy4t7iHiIkECg4aHR9fYGL39/cAAAjOzs43OTrm5uZmZ2jx8vI8PT8ABwzV1dWFhoeQkZExMzUnKSqvr69NT1DBwsKoqalFR0hwcXJWWFhISkufoKBra21zdXXGx8eqqqtAQkN9/D/iAAAHHklEQVR4nO2b2XaCOhSGFSrBoSBaS7WOnWv7/s93VEBBdv4M9lycdf7vpqttINnJzp4SOh1CCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQ8h9n8N3Ts5OeyMEDEgu544Xja6z4Hgk99aJQSzQTHnic6x8QSLayhK+B02usCJ5yaUl+066O9D1rtf8MtM1loqkk4Gji+Bob5mJXnX2kfyRZXrceJMqx2/hLmtcP/bx6E9zL6tLp6VdFhftm28xjZImwEz/nt4gik640AnayJ/2oVbe5FcFsaIkfW13O+q6aYEalGpt2YJ/q+4vH9ZYbDwEPXbe2Ry/0l0RHcqcVsNNZgoFHL5d2w7XX1LcWcRj8/RJKVvFC9gr0NLgs/kfs13swbPb39i8sYXTVx/WkAnua/lZO5jnx7D1+a/Q2Bb35EnxCAbGeht9Fm53PJiyY1yc4G/+9p4jfDQJ2si3oNTjFQrMHsHkMYw57tb5GvqqgR631drRiAeypSo4u4x1snvgbr69KL4uYgSDKl7o51PICNkd8sFNQj8cmR1lbxDt/Zde+ve1xJT0dA0MZLKcgWlP9YWe2gg7g2KQgB8riiYqlDKHNbA66XiMB5kcd+cS7K3guu0G64Elgo6NHYNYABCx0BNqqA/PC58ycI3cjdjp64tHLEauwGLvBy5WB/7fch4Lg/h/sdPTI0CseDjfl45rBVwNJjxMxjcUu1LoPWK3RixMpr9ex8Qg2Ljoyw9FmcMw1ZXOWbhdDwA7NfPgGBGrz5aynanXREewHji1HcouJnJtXICuvQhRwt8mRRRGJajpiMDaHRZQXQ5ubF0DrG4rVMsDGcRGrmLUAR67qVx6rUnAZkCfuBt/oUZE3J3el4mZx6wumV0r+b7DRjOUEqpR1lVhcw+Qovm5xrSMwatC9A7uzRzTl0R4+K7NzsKdB7/pp96CzbqoEYBhi2MA67Gso6rc1uMxJBY4kMOQahOB9auVmRyty62KMpCOuyV+6hYOBm/C61GnNXo47WpyD6QaOoR8ur8C0s12utubeah3SJ1FHBk7ZEd5JsHiZbt3taEUOSm9nVKrREZf06FLlksBxslRKt2ZhYU8T3exnDos4hxHJK/Kugb+OHjGvQ7rV2jFN8CmNsuVt6jxDHX29SUCLA5g50JF3y8Kx6iMd3SFroLq36OiRqSHthDoytdTTBIVrsHiJDynsuIMnmAYvBvXrDK7ijpHXMReAzWRQ1ULRFZ7JceGtQK2RK4SWQAX2hQs9Q1gyinFatrE4w4aKNoUvsC6uYWAQrdbY3Zrr2sAYH5QAHNr+jY6eQGV8U84zNcZuETKGMEtV/dt1tCibGEIKbM1MGQoM1/B9jznMmK2YqZ/Tzxd0nUB1YflogSVUK6DlC+iqHItrIuMgLPQAFbl0kXfJAHv9ABU5H9AmLA7CbuOQWpT3E3JYlAjQZGIJY/QoPsaCc2PHqWCWFIfGuPQ2ARsCSxiCXbiBuRucVjvyk31R68HpN1givhyZ/aGEA2jf1NPtOlrKFH+cfsNXe0K9Y/KWcAsfjG7X0bsqNSxrBLj0lmijN18JDZsQpltW7M+GurpHgx1boovePCXcwWhN9f2KazWymqEuLxnh0pvWr/lJaDgrdz6kaNOobZV6ilP2QLpb6S0hTJn+Qkd/GpuuqkfibG8iR29eEi6ho0g/ysPmkR5DBXVxdbaWPpz+jEtvmujNR8I9KnAflrDoaBZPEh0RzjqylqEu9RTdIj7Pw+0S5it8/Fg+g0rO6Vh47wWhwBzZ6Km4PTwkxAd71Q1geBKPJRwJj1YVW5iQdiMhenOXEF+Mrm4AD+ApNZRwJj5ars8e5jOqP7hdwik+YK+KezDdgRLqLn0FhQvCVk6I3pwlxGpS3QA2fAuBJLzX6IhKT682XUJoRW+uEhouN84LLZlFuIgHJBxpDXV5F2Awge9uHSU6SmgozpXJXPZuKHDpJUS3TMo7R4bLMtdXr9wkxCnTuQBtuB2IJEQ+pho8PnK7zkydJMTl58PsFzqK6zdHtBLeQZceFo9hO92dN6M3JwkN128nRQEYfVFQopMQfVFyIK50xOCwGtGbi4Q4ZeqGZXB/bz4N0UiIC8yXgyx4i/i69uYgoeETIZUWu8Tm2FYjoeG63iV5MNjqhstwkNBwt6G8jmL1TZksIbrC3m1++PSD9aQevdlLuMSfsVXHB1bXJ0QJ0WcI3euDLDzd9ejNWsKdof/SkhtsRYkkYY5rW1df2wxxlaF2KGQrYWa4l1x6Y8uPNCQJ36IAMdk2m29w8+g88gFsGJ237KPhhaWb7eFm5+G2A+TZnYHrAuwPbr7M7V5ceZbh0up9uaHZmduPpQghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIeT/yz/g2Xs2G+M5mAAAAABJRU5ErkJggg==" width="30" height="30" class="d-inline-block align-top" alt="">
+          XYZ Investment Company
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" href="/index">Home</a>
+          <a class="nav-item nav-link active" href="/issuers">Issuers</a>
+          <a class="nav-item nav-link" href="/assets">Assets</a>
+          <a class="nav-item nav-link" href="/transactions">Transactions</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+
+        <div class="row my-3">
+            <div class="col-lg-10">
+                <form action="">
+                  Select a Date: <input type="text" id="datepicker">
+                </form>
+            </div>
+            <div class="col-lg-2">
+                <button id="clearDB_btn" type="button" class="btn btn-outline-warning float-right">Reset Database</button>
+            </div>
+        </div>
+
+        <div id="successAlert-recon" class="alert alert-success alert-dismissible fade show" role="alert" style="display: none;"></div>
+        <div id="successAlert-table" class="alert alert-success alert-dismissible fade show" role="alert" style="display: none;"></div>
+        <div id="dangerAlert-table" class="alert alert-danger" role="alert" style="display:none;">
+            Error. Data not Found. Please Click <a class="href_reconcile alert-link" href="">Here</a> to Reconcile.
+        </div>
+
+
+        <div id="loader"></div>
+        <div class="table-responsive">
+            <table id="issuers_table" class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        {% for col in issuers_colname %}
+                            <th>{{col}}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+
+    <!--  Javascripts  -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename="js/user.js") }}"></script>
+</body>
+
+</html>
