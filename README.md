@@ -3,6 +3,8 @@
 ### Getting Started
 This web application was built using Flask which is a micro web framework written in Python. Bootstrap was used in creating HTML templates while jQuery was utilised to handle viewing big datatables and send AJAX request. Purpose of this application is to automate the reconciliation of trade data and present it for reporting purposes. Go ahead and install the necessary libraries and run the app.py.
 
+A demo of this can be found here: http://lestersim.herokuapp.com
+
 ### Tabs
 1. **Home**: Landing page
 2. **Issuers**: From the assets format, a simple grouby issuer is performed to get the total positions for that particular issuer
