@@ -7,9 +7,9 @@ A demo of this can be found here: http://lestersim.herokuapp.com
 
 ### Tabs
 1. **Home**: Landing page
-2. **Issuers**: From the assets format, a simple grouby issuer is performed to get the total positions for that particular issuer
+2. **Issuers**: Instead of the portfolio-asset level, the table shows the positions aggregated on an IssuerId level. This is derived from the portfolio-asset level by a simple grouby to show the total positions for that particular issuer
 3. **Asset**s: Assets that the investment companies hold are stored in the portfolio-asset level
-4. **Transactions**: Obtain trading data for that speicfic date, shown on a portfolio-asset level
+4. **Transactions**: Obtain trading data for that specific date, shown on a portfolio-asset level
 
 ### How It Works
 1. Select a date on either tabs of Issuers, Assets or Transactions
